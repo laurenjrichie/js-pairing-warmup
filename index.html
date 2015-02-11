@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <button name="button" id="button">Generate pairs</button>
+    <div id="pairs"></div>
+
+    <script charset="utf-8">
+      $(document).ready(function() {
+        button();
+      });
+
+      function button() {
+        $("#button").click(function() {
+          $('#pairs').empty();
+          shuffledStudents = shuffle(students);
+          pairs = pair(shuffledStudents);
+          for(var i = 0; i < (shuffledStudents.length)/2; i++) {
+            $('#pairs').append("<p>" + pairs[i] + "</p>");
+          }
+        });
+      }
+
+      var students = [
+        "Kevin Litchfield",
+        "Erika Lim",
+        "Zubair Desai",
+        "Nina Bachvarova",
+        "Julien Mayer",
+        "Denise Shephard",
+        "Oscar Linares",
+        "Max Gordon",
+        "Dana Mulder",
+        "Rory Grant",
+        "Tina Hweicheng Loh",
+        "Kristian Ziel",
+        "Ngan Pham",
+        "Brady Stilwell",
+        "Michael Dean",
+        "Alex Sell",
+        "Michael Smykowski",
+        "Luis Manzo",
+        "Heather Farley",
+        "Irina Tagintseva",
+        "Lauren Richie",
+        "Edozie Izegbu",
+        "David Dang",
+        "Bradley Johnson",
+        "Helen Lam",
+        "Cameron Irmas",
+        "Victoria Billingsley",
+        "Rosa Choi"
+      ];
+
+      function shuffle(array) {
+          var counter = array.length, temp, index;
+
+          while (counter > 0) {
+              index = Math.floor(Math.random() * counter);
+              counter--;
+
+              temp = array[counter];
+              array[counter] = array[index];
+              array[index] = temp;
+          }
+          return array;
+      }
+
+      function pair(array) {
+        var pairs = [];
+        for (var i = 0, j = 2; j <= array.length; i = i + 2, j = j + 2) {
+          var pair = array.slice(i, j);
+          pairs.push(pair);
+        }
+        return pairs
+      }
+    </script>
+  </body>
+</html>
